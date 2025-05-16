@@ -136,6 +136,7 @@ rules:
   - DST-PORT,123,DIRECT
   - DOMAIN-SUFFIX,imee.me,DIRECT
   - DOMAIN-SUFFIX,docker.amingg.com,DIRECT
+  - DOMAIN-SUFFIX,docker.1panel.live,DIRECT
   - DOMAIN-SUFFIX,hongxingyunmovie.vip,Emby
   - DOMAIN-SUFFIX,nz.hunao.xyz,一键智能
   - RULE-SET,telegram,电报消息
