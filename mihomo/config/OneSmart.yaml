@@ -21,7 +21,7 @@ FilterJP: &FilterJP '^(?=.*(?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK))(?!.*
 FilterUS: &FilterUS '^(?=.*(?i)(美|🇺🇸|US|USA|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD))(?!.*(排除1|排除2|5x|Australia|0.5|IPV6)).*$'
 FilterOther: &FilterOther '^(?!.*(DIRECT|美|港|坡|台|新|日|韩|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|🇭🇰|🇼🇸|🇹🇼|🇸🇬|🇯🇵|🇰🇷|🇺🇸|🇬🇧|🇦🇹|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|HK|TW|SG|JP|KR|US|GB|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|HKG|TPE|TSA|KHH|SIN|XSP|NRT|HND|KIX|CTS|FUK|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD|LHR|LGW))'
 FilterAll: &FilterAll '^(?!.*(DIRECT|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))'
-Select: &Select {type: select, proxies: [香港智能, 新加坡智能, 日本智能, 美国智能]}
+Select: &Select {type: select, proxies: [香港智能, 新加坡智能, 日本智能, 美国智能, 链式代理]}
 Sel_Smart: &Sel_Smart {type: select, proxies: [一键智能, 香港智能, 新加坡智能, 日本智能, 美国智能]}
 Sel_US: &Sel_US {type: select, proxies: [美国智能, 新加坡智能, 日本智能]}
 Sel_SG: &Sel_SG {type: select, proxies: [新加坡智能, 美国智能, 日本智能]}
@@ -104,13 +104,35 @@ dns:
 proxy-groups:
   - {name: 一键智能,   <<: *Select, icon: https://git.imee.me/https://github.com/666OS/YYDS/raw/main/mihomo/image/mihomo.png}
   - {name: AI平台,    <<: *Sel_US, filter: "🇺🇸|美|🇸🇬|新|🇯🇵|日|🇼🇸|🇹🇼|台",exclude-filter: "🇭🇰|港", icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png}
-  - {name: 电报消息,   <<: *Sel_SG, icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png}
   - {name: 国际媒体,   <<: *Select, include-all: true, icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/DomesticMedia.png}
   - {name: Emby,     <<: *Select, include-all: true, icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png}
+  - {name: 链式代理,   type: select, proxies: [RELAY], icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Bypass.png}
   - {name: 香港智能,   <<: *Smart, filter: *FilterHK, icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png}
   - {name: 新加坡智能, <<: *Smart, filter: *FilterSG, icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png}
   - {name: 日本智能,   <<: *Smart, filter: *FilterJP, icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png}
   - {name: 美国智能,   <<: *Smart, filter: *FilterUS, icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png}
+  
+   # ================ 中转机选择组 ================
+  - name: 中转机选择
+    type: select
+    include-all: true
+    filter: *FilterAll
+    icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Server.png
+
+  # ================ 落地机选择组 ================
+  - name: 落地机选择
+    type: select
+    include-all: true
+    filter: *FilterAll
+    icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
+
+  # ================ 手动链式代理 ================
+  - name: RELAY
+    type: relay
+    proxies:
+      - 中转机选择
+      - 落地机选择
+    icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Rocket.png
 
 rule-providers: 
   download:           {type: http, interval: 86400, behavior: classical, format: yaml, url: https://git.imee.me/https://github.com/666OS/YYDS/raw/main/mihomo/rules/download.yaml}
