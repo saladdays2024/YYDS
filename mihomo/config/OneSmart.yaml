@@ -83,7 +83,7 @@ tun:
     
 dns:
   enable: true
-  ipv6: true
+  ipv6: false
   fake-ip-range: 198.18.0.1/16
   default-nameserver:
     - tls://223.5.5.5
