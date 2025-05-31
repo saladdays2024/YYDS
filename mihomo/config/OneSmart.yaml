@@ -86,10 +86,10 @@ dns:
   ipv6: true
   fake-ip-range: 198.18.0.1/16
   default-nameserver:
-    - tls://223.5.5.5
-    - tls://223.6.6.6
+    - tls://8.8.8.8
+    - tls://1.1.1.1
   nameserver:
-    - https://dns.alidns.com/dns-query
+    - https://dns.google/dns-query
     - https://doh.pub/dns-query
   fake-ip-filter:
     - rule-set:connectivity-check
