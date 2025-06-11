@@ -116,7 +116,7 @@ proxy-groups:
   - name: 中转机选择
     type: select
     include-all: true
-    filter: "HK|港|香港"
+    filter: "HK|港|香港|Hong Kong"
     icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Server.png
 
   # ================ 落地机选择组 ================
