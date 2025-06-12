@@ -1,5 +1,5 @@
-PProviders: &PProviders {type: http, interval: 86400, proxy: DIRECT, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 600}, filter: '^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))'}
-Smart: &Smart {type: smart, interval: 120, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 8000, max-failed-times: 3, hidden: false, include-all: true}
+PProviders: &PProviders {type: http, interval: 86400, proxy: DIRECT, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 600 , timeout: 10000 , lazy: true}, filter: '^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))'}
+Smart: &Smart {type: smart, interval: 300, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 15000, max-failed-times: 2, hidden: false, include-all: true, tolerance: 50}
 FilterHK: &FilterHK '^(?=.*(?i)(港|🇭🇰|HK|Hong|HKG))(?!.*(排除1|排除2|5x|0.5|3X|V6)).*$'
 FilterSG: &FilterSG '^(?=.*(?i)(坡|🇸🇬|SG|Sing|SIN|XSP))(?!.*(排除1|排除2|5x|0.5|V6)).*$'
 FilterJP: &FilterJP '^(?=.*(?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK))(?!.*(排除1|排除2|5x|尼日|0.5|V6)).*$'
@@ -39,7 +39,7 @@ skip-auth-prefixes:
   - 192.168.31.0/24
   - 192.168.100.0/24
   - 127.0.0.1/8
-  
+
 external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip
 external-ui-name: zashboard
 external-ui: ui
@@ -49,6 +49,11 @@ secret: yyds666
 profile:
   store-selected: true
   store-fake-ip: true
+
+# 连接超时设置
+connection-pool-size: 100
+geo-auto-update: false  # 关闭自动更新GEO文件
+geo-update-interval: 168  # 每周更新一次
   
 sniffer:
   enable: true
