@@ -91,6 +91,10 @@ dns:
   nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
+  fallback:
+    - https://dns.google/dns-query
+    - tls://8.8.4.4
+    - tls://1.1.1.1
   fake-ip-filter:
     - rule-set:connectivity-check
     - rule-set:private_domain
