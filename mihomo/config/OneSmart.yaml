@@ -143,6 +143,7 @@ rules:
   - DOMAIN-SUFFIX,hongxingyunmovie.vip,Emby
   - DOMAIN-SUFFIX,nz.hunao.xyz,一键智能
   - DOMAIN-SUFFIX,missav.ai,国际媒体
+  - DOMAIN-SUFFIX,jable.tv,国际媒体
   - RULE-SET,telegram,一键智能
   - RULE-SET,category-ai-!cn,AI平台
   - RULE-SET,youtube,国际媒体
