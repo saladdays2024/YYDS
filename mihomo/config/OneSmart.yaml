@@ -141,6 +141,7 @@ rules:
   - DOMAIN-SUFFIX,docker.amingg.com,DIRECT
   - DOMAIN-SUFFIX,docker.1panel.live,DIRECT
   - DOMAIN-SUFFIX,hongxingyunmovie.vip,Emby
+  - DOMAIN-SUFFIX,lite.cn2gias.uk,Emby
   - DOMAIN-SUFFIX,nz.hunao.xyz,一键智能
   - DOMAIN-SUFFIX,missav.ai,国际媒体
   - DOMAIN-SUFFIX,jable.tv,国际媒体
